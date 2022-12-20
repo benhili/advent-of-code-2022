@@ -6,12 +6,14 @@ async function formatInput(fileName: string): Promise<Array<number>> {
     .map((elf: Array<number>) => elf.reduce((sum, curr) => sum + curr))
 }
 
-const calorieSums = await formatInput("./day1.txt")
+function threeLargest(arr: Array<number>): Array<number> {
+  return arr.sort((a, b) => b - a).slice(0, 3)
+}
+
+const calorieSums = await formatInput("./inputs/day1.txt")
 
 console.log("Part 1: ")
 console.log(Math.max(...calorieSums))
 
 console.log("Part 2: ")
-console.log(calorieSums.sort((a, b) => b - a)
-  .slice(0, 3)
-  .reduce((acc, curr) => acc + curr))
+console.log(threeLargest(calorieSums).reduce((acc, curr) => acc + curr))
